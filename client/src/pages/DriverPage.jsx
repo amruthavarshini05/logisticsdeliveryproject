@@ -24,15 +24,15 @@ export default function DriverPage() {
   const driverId = localStorage.getItem("driverId");
   const driverName = localStorage.getItem("driverName");
 
-  useEffect(() => {
+  useEffect(() => { //runs when the component loads
     // Check if driver is logged in
     if (!driverId) {
-      navigate("/driver/auth");
+      navigate("/driver/auth"); //if not logged in, takes the driver to authentication page
       return;
     }
 
     loadAssignments();
-  }, [driverId, navigate]);
+  }, [driverId, navigate]); //reruns the function whenever driverId or navigate changes
 
   const loadAssignments = async () => {
     try {
@@ -66,6 +66,10 @@ export default function DriverPage() {
     handleScannedShipmentModalClose();
   };
 
+
+  // Uses a try block-> uses navigator to get latitude and longitude geolocation of the driver( to add to the map for scanpoint). 
+  // Await....post send these POSTs these details (added as scanpoint details in DB for a package). 
+  // Update driver info (for perfect backend) and then refresh UI and stop loading. (again has catch error block) 
   const updateStatus = async (trackingId, newStatus) => {
     setUpdatingShipmentId(trackingId);
     try {
