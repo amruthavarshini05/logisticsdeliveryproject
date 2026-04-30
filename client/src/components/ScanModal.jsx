@@ -3,7 +3,6 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import "../styles/ScanModal.css";
 
 export default function ScanModal({ isOpen, onClose, onScanComplete, assignments }) {
-  const scannerRef = useRef(null);
   const [scanner, setScanner] = useState(null);
   const [error, setError] = useState("");
   const [scannedId, setScannedId] = useState("");
@@ -14,14 +13,14 @@ export default function ScanModal({ isOpen, onClose, onScanComplete, assignments
     try {
       // Initialize scanner
       const html5Scanner = new Html5QrcodeScanner(
-        "qr-reader",
+        "qr-reader", //id so we can apply css
         {
-          fps: 10,
-          qrbox: { width: 250, height: 250 },
-          rememberLastUsedCamera: true,
-          aspectRatio: 1.0
+          fps: 10, //scans 10 tems per second
+          qrbox: { width: 250, height: 250 }, //scanning box size
+          rememberLastUsedCamera: true, //remembers last camera used
+          aspectRatio: 1.0 //maintains square scanning area
         },
-        false
+        false // verbose logging off. (verbose is a diagnostic setting that records info)
       );
 
       const onScanSuccess = (decodedText) => {
@@ -50,8 +49,8 @@ export default function ScanModal({ isOpen, onClose, onScanComplete, assignments
         // Silently handle scanning failures (continuous scanning)
       };
 
-      html5Scanner.render(onScanSuccess, onScanFailure);
-      setScanner(html5Scanner);
+      html5Scanner.render(onScanSuccess, onScanFailure); //starts the scanner and sets up callbacks (callbacks are functions that get called when certain events happen, in this case when a scan is successful or fails)
+      setScanner(html5Scanner); // Store scanner instance for cleanup
 
       return () => {
         if (html5Scanner) {
@@ -69,15 +68,15 @@ export default function ScanModal({ isOpen, onClose, onScanComplete, assignments
       scanner.clear().catch(err => console.error("Error closing scanner:", err));
     }
     setError("");
-    setScannedId("");
-    onClose();
+    setScannedId(""); //it clears whatever is stores in error and scannedId after closing scanner.
+    onClose(); //tells parent component to close the modal.
   };
 
   if (!isOpen) return null;
 
   return (
     <div className="scan-modal-overlay" onClick={handleClose}>
-      <div className="scan-modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="scan-modal-content" onClick={(e) => e.stopPropagation()}> 
         <div className="scan-modal-header">
           <h2>Scan Barcode</h2>
           <button className="close-button" onClick={handleClose}>✕</button>
