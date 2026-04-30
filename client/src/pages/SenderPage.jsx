@@ -26,7 +26,7 @@ export default function SenderPage() {
     payment: { amount: "₹349", method: "VISA", card: "••••" }
   });
 
-  const routeSummary = useMemo(() => {
+  const routeSummary = useMemo(() => { //useMemo memorises the computed value and only recalculates it when the dependencies change.
     const sender = formData.sender.city || formData.sender.street || "Origin";
     const receiver = formData.receiver.city || formData.receiver.street || "Destination";
     return `${sender} to ${receiver}`;
