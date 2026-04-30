@@ -25,6 +25,11 @@ export default function DriverAuthPage() {
     driverLicense: ""
   });
 
+
+  // e is the event Object. It makes React get triggered when a user types in an input. 
+  // Basically gets email field value that user typed and updates that as the LoginData. 
+  // Prev is used just to update whatever was there before. 
+  // So like creates a new object using the old data, updating one field
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLoginData(prev => ({ ...prev, [name]: value }));
@@ -35,6 +40,8 @@ export default function DriverAuthPage() {
     setRegisterData(prev => ({ ...prev, [name]: value }));
   };
 
+  //runs when a login is submitted 
+  // => it sets the page to loading (disables buttons) and also clears any previous errors on the page 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -46,6 +53,7 @@ export default function DriverAuthPage() {
         password: loginData.password
       });
 
+      //localStorage is a way to store data in the browser that persists even after the page is refreshed.
       const { driver } = response.data;
       localStorage.setItem("driverId", driver._id);
       localStorage.setItem("driverName", driver.name);
@@ -81,6 +89,7 @@ export default function DriverAuthPage() {
 
     try {
       await axios.post("http://localhost:5000/api/driver/register", {
+        //registerData because it is sent to backend and stored in the database as a new entry.
         name: registerData.name,
         email: registerData.email,
         phone: registerData.phone,
