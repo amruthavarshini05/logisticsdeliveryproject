@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  /* Rapunzel-inspired light theme palette */
+  --primary-brown:     #7B2FBE;
+  --primary-lavender:  #A855F7;
+  --primary-pink:      #EC4899;
+  --accent-dark:       #2D1B5A;
+  --accent-light:      #E9D5FF;
+  --bg-light:          #FBF7FF;
+  --bg-white:          #FFFFFF;
+  --text-dark:         #251B3D;
+  --text-muted:        #6F6382;
+  --border-light:      #E9D8FD;
+  --shadow-soft:       rgba(123, 47, 190, 0.1);
+  --shadow-medium:     rgba(123, 47, 190, 0.18);
+  --sun-gold:          #F5C542;
+  --sky-blue:          #1F77D2;
+  --leaf-green:        #06A77D;
+  --flower-pink:       #EC4899;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 
+    'Droid Sans', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #FBF7FF 0%, #F6E7FF 48%, #FFF4B8 100%);
+  color: var(--text-dark);
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Ensure input elements are readable on mobile */
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
+}
+
+/* Prevent zoom on input focus on mobile */
+@media (max-width: 768px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Touch-friendly buttons */
+button {
+  padding: 10px 16px;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

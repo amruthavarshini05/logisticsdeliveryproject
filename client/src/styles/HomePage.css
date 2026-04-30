@@ -1,0 +1,501 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
+.mock-home {
+  --bg: #c3a6e8;
+  --purple: #6A1B9A;
+  --purple2: #7B2CBF;
+  --purple3: #C77DFF;
+  --pink: #F72585;
+  --pink2: #E056FD;
+}
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap");
+
+.mock-home {
+  --bg: #c3a6e8;
+  --purple: hsl(277, 54%, 50%);
+  --purple2: hwb(272 29% 26%);
+  --purple3: #C77DFF;
+  --pink: rgb(210, 77, 153);
+  --pink2: #c3267c;
+  --gold: #E9C46A;
+  --white: #FFFFFF;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Outfit", sans-serif;
+  color: var(--white);
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(163, 106, 229, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(195, 166, 232, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 10%, rgba(140, 90, 210, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #c3a6e8 0%, #b08fd4 50%, #9d79c0 100%);
+}
+
+
+
+.mock-home .home-content {
+  position: relative;
+  z-index: 5;
+  width: min(1100px, 100%);
+}
+
+.road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(180deg, #5A189A 0%, #6A1B9A 100%);
+  overflow: hidden;
+  z-index: 0;
+}
+
+.road::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent, rgba(74, 16, 209, 0.48)),
+    linear-gradient(90deg, rgba(255, 110, 199, 0.22), rgba(199, 125, 255, 0.16), rgba(233, 196, 106, 0.2));
+  animation: roadGlow 3s linear infinite;
+}
+
+.road-line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 6px;
+  width: 160px;
+  background: linear-gradient(90deg, #B379F6, #F962A6, #E9C46A);
+  border-radius: 3px;
+  animation: roadScroll 0.85s linear infinite;
+  box-shadow: 0 0 12px rgba(179, 121, 246, 0.7);
+}
+
+.road-line:nth-child(1)  { left: 0; }
+.road-line:nth-child(2)  { left: 220px;  animation-delay: -0.4s; }
+.road-line:nth-child(3)  { left: 440px;  animation-delay: -0.2s; }
+.road-line:nth-child(4)  { left: 660px;  animation-delay: -0.6s; }
+.road-line:nth-child(5)  { left: 880px;  animation-delay: -0.8s; }
+.road-line:nth-child(6)  { left: 1100px; animation-delay: -1s; }
+.road-line:nth-child(7)  { left: 1320px; animation-delay: -1.2s; }
+.road-line:nth-child(8)  { left: 1540px; animation-delay: -1.4s; }
+.road-line:nth-child(9)  { left: 1760px; animation-delay: -1.6s; }
+.road-line:nth-child(10) { left: 1980px; animation-delay: -1.8s; }
+.road-line:nth-child(11) { left: 2200px; animation-delay: -2s; }
+.road-line:nth-child(12) { left: 2420px; animation-delay: -2.2s; }
+.road-line:nth-child(13) { left: 2640px; animation-delay: -2.4s; }
+.road-line:nth-child(14) { left: 2860px; animation-delay: -2.6s; }
+
+@keyframes roadScroll {
+  from { transform: translateY(-50%) translateX(0); }
+  to { transform: translateY(-50%) translateX(-220px); }
+}
+
+@keyframes roadGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.truck-stage,
+.choose-screen,
+.mock-options {
+  height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.truck-stage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+  transition: transform 1.2s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
+}
+
+.truck-stage.drive-away {
+  transform: translateX(120vw) !important;
+  opacity: 0;
+}
+
+.truck-art {
+  position: relative;
+  display: inline-block;
+}
+
+.truck-svg {
+  width: min(1200px, 99vw);
+  filter: drop-shadow(0 20px 60px rgba(74,16,209,0.45));
+  display: block;
+}
+
+.truck-wheel {
+  animation: spin 0.7s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.truck-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 32%;
+  transform: translate(-50%, -58%);
+  text-align: center;
+  pointer-events: all;
+  width: 44%;  
+}
+
+.truck-name {
+  font-family: "Bebas Neue", cursive;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  color: #E9C46A;
+  letter-spacing: 4px;
+  text-shadow:
+    0 3px 0 rgba(0,0,0,0.5),
+    0 10px 25px rgba(0,0,0,0.6),
+    0 0 20px rgba(231,198,114,0.6);
+  display: block;
+  outline: none;
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
+  border-bottom: 2px dashed transparent;
+  transition: border-color 0.2s;
+  margin-top: 20px;
+}
+
+.truck-name:focus {
+  border-color: rgba(249,98,166,0.5);
+}
+
+.truck-tagline {
+  font-size: clamp(0.75rem, 1.6vw, 1.1rem);
+  color: rgba(245,240,255,0.95);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 10px;
+  opacity: 0.85;
+  letter-spacing: 2.5px;
+  display: block;
+  outline: none;
+  cursor: text;
+  -webkit-user-select: text;
+  user-select: text;
+  border-bottom: 2px dashed transparent;
+  transition: border-color 0.2s;
+  text-shadow:
+    0 2px 12px rgba(0,0,0,0.9),
+    0 0 20px rgba(0,0,0,0.6);
+  text-align: center;
+}
+
+.truck-name {
+  font-family: "Bebas Neue", serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 700;
+
+  color: hsl(47, 87%, 73%); /* soft muted yellow */
+  letter-spacing: 2px;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.3),
+    0 6px 18px rgba(244, 211, 94, 0.35);
+
+  display: block;
+  text-align: center;
+
+  outline: none;
+  cursor: text;
+
+  -webkit-user-select: text;
+  user-select: text;
+
+  border-bottom: 2px dashed transparent;
+  transition: all 0.25s ease;
+}
+
+.truck-name:hover,
+.truck-name:focus {
+  color: #ffe08a; /* lighter yellow glow */
+  border-color: rgba(244, 211, 94, 0.4);
+
+  text-shadow:
+    0 4px 12px rgba(244, 211, 94, 0.6);
+}
+
+.truck-tagline {
+  font-family: "Quicksand", sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  font-weight: 500;
+  font-style: italic;   /* ← THIS is what you want */
+
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1.5px;
+
+  margin-top: 0px;
+  opacity: 0.9;
+
+  display: block;
+  text-align: center;
+
+  outline: none;
+  cursor: text;
+
+  -webkit-user-select: text;
+  user-select: text;
+
+  border-bottom: 2px dashed transparent;
+  transition: all 0.2s ease;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,0.6);
+}
+
+.truck-tagline:focus {
+  border-color: rgba(245,240,255,0.3);
+}
+
+.start-btn,
+.option-btn,
+.back-btn {
+  border: 0;
+  color: white;
+  border-radius: 999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: "Outfit", sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-btn {
+  margin-top: 32px;
+  padding: 18px 58px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  box-shadow: 0 8px 32px rgba(107, 47, 217, 0.5);
+  font-size: 1.15rem;
+}
+
+.start-btn:hover,
+.option-btn:hover,
+.back-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(107, 47, 217, 0.6);
+}
+
+.floating-back {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+  padding: 11px 22px;
+  background: rgba(74, 16, 209, 0.78);
+  border: 1px solid rgba(199, 125, 255, 0.45);
+}
+
+.choose-title,
+.opts-title {
+  font-family: "Bebas Neue", cursive;
+  font-size: clamp(2.8rem, 7vw, 5.4rem);
+  letter-spacing: 4px;
+  color: #2a1660;
+  margin: 0 0 44px;
+}
+
+.choose-title span,
+.opts-title span {
+  color: var(--pink);
+}
+
+.bubbles-row,
+.options-grid {
+  display: flex;
+  gap: 46px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.bubble {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;   /* IMPORTANT */
+  padding: 0;         /* remove spacing */
+
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.bubble-user {
+  background: linear-gradient(135deg, var(--purple), var(--purple2));
+  box-shadow: 0 0 60px rgba(74, 16, 209, 0.45);
+}
+
+.bubble-driver {
+  background: linear-gradient(135deg, var(--pink), var(--pink2));
+  box-shadow: 0 0 60px rgba(162, 21, 141, 0.42);
+}
+
+.bubble:hover {
+  transform: scale(1.08);
+}
+
+.bubble-image {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   
+}
+
+.bubble-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.bubble-label {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  color: #2a1660;
+}
+
+.option-card {
+  width: 300px;
+  min-height: 300px;
+  background: linear-gradient(135deg, var(--purple), #5A189A);
+  border: 2px solid rgba(199, 125, 255, 0.42);
+  border-radius: 24px;
+  padding: 40px 30px;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 20px 60px rgba(74, 16, 209, 0.25);
+}
+
+.option-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.11), transparent);
+  pointer-events: none;
+}
+
+.track-card,
+.login-card {
+  background: linear-gradient(135deg, var(--pink), var(--pink2));
+}
+
+
+
+.option-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--pink);
+  box-shadow: 0 22px 65px rgba(74, 16, 209, 0.36);
+}
+
+.option-card h3 {
+  font-family: "Bebas Neue", cursive;
+  font-size: 2.1rem;
+  letter-spacing: 3px;
+  margin: 20px 0 8px;
+}
+
+.option-icon-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+  display: block;
+}
+.option-icon-img1 {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+.option-card p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+.option-btn {
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .mock-home {
+    padding: 12px;
+  }
+
+  .truck-stage {
+    height: calc(100vh - 28px);
+    margin-bottom: 62px;
+  }
+
+  .truck-text-overlay {
+    left: 46%;
+    width: 52%;
+    margin-top: 20px;
+  }
+
+  .road {
+    height: 86px;
+  }
+
+  .bubble {
+    width: 170px;
+    height: 170px;
+  }
+
+  .option-card {
+    width: min(330px, 92vw);
+  }
+}

@@ -1,0 +1,579 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #c3a6e8;
+  --purple: #6A1B9A;
+  --purple2: #7B2CBF;
+  --purple3: #C77DFF;
+  --pink: #F72585;
+  --pink2: #E056FD;
+  --white: #FFFFFF;
+  --dark: #2A2A2A;
+  --card: #6A1B9A;
+  --border: rgba(199, 125, 255, 0.45);
+  --text-dim: rgba(255, 255, 255, 0.75);
+  --yellow: #E9C46A;
+  --green: #30e080;
+  --teal: #20D9D9;
+  --teal2: #00BFD9;
+}
+
+* { box-sizing: border-box; }
+
+/* ========== PAGE WRAPPER ========== */
+.driver-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #c3a6e8 0%, #b08fd4 100%);
+  font-family: 'Outfit', sans-serif;
+  color: var(--white);
+  padding: 0;
+}
+
+.driver-page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
+  color: var(--purple2);
+  background: linear-gradient(135deg, #c3a6e8 0%, #b08fd4 100%);
+}
+
+/* ========== HEADER / TOPBAR ========== */
+.driver-header {
+  width: 100%;
+  background: linear-gradient(135deg, #6A1B9A, #5A189A);
+  border-bottom: 1px solid rgba(107, 47, 217, 0.3);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(74, 16, 209, 0.2);
+}
+
+/* Logo / Brand */
+.driver-info h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  color: var(--yellow);
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.85);;
+}
+
+.driver-name {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  margin: 4px 0 0;
+  letter-spacing: 0.5px;
+}
+
+/* ========== HEADER BUTTONS ========== */
+.header-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.refresh-button,
+.logout-button,
+.availability-button {
+  padding: 9px 18px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1.5px solid rgba(231, 125, 255, 0.5);
+  background: rgba(90, 24, 154, 0.35);
+  color: var(--white);
+}
+
+.refresh-button:hover {
+  background: rgba(107, 47, 217, 0.5);
+  border-color: var(--purple3);
+  transform: translateY(-2px);
+}
+
+.logout-button {
+  border-color: rgba(247, 37, 133, 0.45);
+  background: rgba(247, 37, 133, 0.15);
+}
+
+.logout-button:hover {
+  background: rgba(247, 37, 133, 0.35);
+  border-color: var(--pink);
+  transform: translateY(-2px);
+}
+
+.availability-button.available {
+  background: rgba(48, 224, 128, 0.15);
+  border-color: rgba(48, 224, 128, 0.5);
+  color: var(--green);
+}
+
+.availability-button.available:hover {
+  background: rgba(48, 224, 128, 0.3);
+  transform: translateY(-2px);
+}
+
+.availability-button.unavailable {
+  background: rgba(247, 37, 133, 0.15);
+  border-color: rgba(247, 37, 133, 0.4);
+  color: #F472B6;
+}
+
+.availability-button.unavailable:hover {
+  background: rgba(247, 37, 133, 0.3);
+  transform: translateY(-2px);
+}
+
+.availability-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ========== ASSIGNMENTS COUNT SECTION ========== */
+.assignments-count {
+  max-width: 640px;
+  margin: 24px auto 0;
+  padding: 0 20px;
+}
+
+.count-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.count-header p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.count-header strong {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+.archive-toggle {
+  padding: 6px 16px;
+  background: rgba(90, 24, 154, 0.35);
+  border: 1.5px solid rgba(199, 125, 255, 0.45);
+  color: var(--white);
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.archive-toggle:hover {
+  background: rgba(107, 47, 217, 0.4);
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ========== SCANNER SECTION ========== */
+.scanner-section{
+  background: linear-gradient(135deg, #6A1B9A, #5A189A);
+  border:1.5px solid rgba(199,125,255,0.4);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:24px;
+  text-align:center;
+}
+
+.scanner-section h3{
+  font-family:'Bebas Neue',cursive;
+  font-size:1.5rem;
+  letter-spacing:3px;
+  color:var(--purple3);
+  margin-bottom:16px;
+}
+
+.scanner-viewport{
+  width:100%;
+  max-width:300px;
+  height:180px;
+  background:rgba(107,47,217,0.06);
+  border:2px dashed rgba(107,47,217,0.4);
+  border-radius:16px;
+  margin:0 auto 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition: border-color 0.2s;
+}
+
+.scanner-viewport:hover {
+  border-color: var(--teal);
+}
+
+.scanner-line{
+  position:absolute;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg,transparent,var(--teal2),transparent);
+  animation:scan 2s ease-in-out infinite;
+  box-shadow:0 0 12px var(--teal);
+}
+
+@keyframes scan{
+  0%{top:10%;}
+  100%{top:85%;}
+}
+
+.scanner-icon{
+  font-size:3rem;
+  color:rgba(107,47,217,0.4);
+}
+
+.scan-btn{
+  padding:12px 20px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  color:white;
+  border:none;
+  border-radius:50px;
+  font-family:'Bebas Neue',cursive;
+  font-size:1rem;
+  letter-spacing:1px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* ========== SCANNER CONTAINER ========== */
+.dd-body {
+  max-width: 640px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+/* ========== SHIPMENTS LIST ========== */
+.shipments-container {
+  max-width: 640px;
+  margin: 20px auto;
+  padding: 0 20px 60px;
+}
+
+/* ========== EMPTY STATE ========== */
+.no-assignments {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #6A1B9A, #5A189A);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(74, 16, 209, 0.2);
+}
+
+.no-assignments p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  margin: 8px 0;
+  letter-spacing: 0.5px;
+}
+
+.no-assignments p:first-child {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  color: var(--purple3);
+}
+
+/* ========== SHIPMENT CARD ========== */
+.shipment-card {
+  background: linear-gradient(135deg, #6A1B9A, #5A189A);
+  border: 1.5px solid rgba(199, 125, 255, 0.35);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 20px rgba(74, 16, 209, 0.15);
+}
+
+/* Left status accent bar */
+.shipment-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  background: var(--purple3);
+}
+
+.shipment-card:hover {
+  border-color: rgba(199, 125, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(74, 16, 209, 0.25);
+}
+
+.shipment-card.archived {
+  opacity: 0.8;
+}
+
+.shipment-card.archived::before {
+  background: var(--green);
+}
+
+/* ========== CARD HEADER ========== */
+.shipment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(199, 125, 255, 0.2);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.shipment-header h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: var(--white);
+  margin: 0;
+}
+
+.status-badge {
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(107, 47, 217, 0.2);
+  border: 1px solid rgba(107, 47, 217, 0.4);
+  color: var(--white);
+}
+
+/* ========== CARD DETAILS ========== */
+.shipment-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 14px 0;
+}
+
+.detail-section {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(199, 125, 255, 0.18);
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.detail-section h4 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 2.5px;
+  color: var(--yellow);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.detail-section p {
+  margin: 6px 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.detail-section strong {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1px;
+  font-weight: 600;
+}
+
+/* ========== ACTIONS ========== */
+.shipment-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.scan-button {
+  padding: 9px 18px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1.5px solid rgba(248, 125, 255, 0.5);
+  background: rgba(154, 24, 109, 0.35);
+  color: var(--white);
+}
+
+.scan-button:hover {
+  background: rgba(65, 226, 129, 0.5);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+.manifest-button {
+  padding: 9px 18px;
+  border-radius: 50px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: 1.5px solid rgba(248, 125, 255, 0.5);
+  background: rgba(154, 24, 109, 0.35);
+  color: var(--white);
+}
+
+.manifest-button:hover {
+  background: rgba(65, 226, 129, 0.5);
+  border-color: var(--green);
+  transform: translateY(-2px);
+}
+
+/* ========== COMPLETION BADGES ========== */
+.completion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: rgba(48, 224, 128, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(48, 224, 128, 0.3);
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.completion-badge.failed {
+  background: rgba(247, 37, 133, 0.12);
+  color: #F472B6;
+  border-color: rgba(247, 37, 133, 0.3);
+}
+
+/* ========== ERROR MESSAGE ========== */
+.error-message {
+  background: rgba(247, 37, 133, 0.12);
+  color: #F472B6;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin: 16px 20px;
+  border: 1px solid rgba(247, 37, 133, 0.3);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 640px) {
+  .driver-header {
+    padding: 14px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .availability-button {
+    grid-column: span 2;
+  }
+
+  .assignments-count,
+  .shipments-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .shipment-details {
+    grid-template-columns: 1fr;
+  }
+
+  .shipment-card {
+    padding: 16px;
+  }
+
+  .shipment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-badge {
+    align-self: flex-start;
+  }
+
+  .shipment-actions {
+    flex-direction: column;
+  }
+
+  .action-button,
+  .completion-badge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .availability-button {
+    grid-column: span 1;
+  }
+
+  .driver-info h1 {
+    font-size: 1.2rem;
+  }
+}
+
+/* QR scanner wrapper */
+#qr-reader {
+  max-width: 100%;
+  overflow: hidden;
+}

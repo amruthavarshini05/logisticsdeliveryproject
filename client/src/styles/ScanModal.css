@@ -1,0 +1,249 @@
+/* REPLACE your current scan modal CSS with this themed version */
+
+.scan-modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(30,16,53,0.72);
+  backdrop-filter:blur(6px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:18px;
+  font-family:'Outfit',sans-serif;
+}
+
+.scan-modal-content{
+  width:100%;
+  max-width:520px;
+  max-height:92vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+
+  background: linear-gradient(135deg, #c3a6e8 0%, #b08fd4 100%);;
+  border:1.5px solid rgba(199,125,255,0.35);
+  border-radius:22px;
+
+  box-shadow:
+    0 20px 60px rgba(74,16,209,0.32),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+
+  color:#fff;
+}
+
+/* HEADER */
+
+.scan-modal-header{
+  background:linear-gradient(135deg,#6A1B9A,#7B2CBF,#F72585);
+  padding:20px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.scan-modal-header h2{
+  margin:0;
+  font-family:'Bebas Neue',cursive;
+  font-size:1.6rem;
+  letter-spacing:3px;
+  color:#E9C46A;
+}
+
+.close-button{
+  width:38px;
+  height:38px;
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:1.35rem;
+  font-weight:700;
+  transition:0.2s ease;
+}
+
+.close-button:hover{
+  color: #c81c1ce0;
+  background:rgba(255, 255, 255, 0.629);
+  transform:scale(1.08);
+}
+
+/* BODY */
+
+.scan-modal-body{
+  padding:24px;
+  overflow-y:auto;
+  flex:1;
+}
+
+.scanner-container{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* CAMERA BOX */
+
+.qr-reader,
+#qr-reader{
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+
+  overflow:hidden;
+  border-radius:18px;
+
+  background:linear-gradient(135deg,#6A1B9A,#5A189A);
+
+  box-shadow:
+    0 10px 28px rgba(74,16,209,0.28),
+    0 0 0 4px rgba(255,255,255,0.03);
+}
+
+/* scanner text */
+
+.scanner-hint{
+  text-align:center;
+  color:rgba(255,255,255,0.78);
+  font-size:0.92rem;
+  letter-spacing:0.3px;
+  margin-top:2px;
+}
+
+/* ERROR */
+
+.scan-error{
+  background:rgba(247,37,133,0.14);
+  color:#F9A8D4;
+  border:1px solid rgba(247,37,133,0.32);
+  border-left:4px solid #F72585;
+
+  padding:14px 16px;
+  border-radius:12px;
+
+  font-size:0.9rem;
+  font-weight:600;
+}
+
+/* SUCCESS */
+
+.scanned-result{
+  background:rgba(48,224,128,0.12);
+  color:#86EFAC;
+  border:1px solid rgba(48,224,128,0.28);
+  border-left:4px solid #30e080;
+
+  padding:14px 16px;
+  border-radius:12px;
+
+  text-align:center;
+  font-weight:700;
+}
+
+/* FOOTER */
+
+.scan-modal-footer{
+  padding:18px 22px;
+  border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+/* BUTTONS */
+
+.cancel-button{
+  padding:11px 22px;
+  border-radius:50px;
+  cursor:pointer;
+
+  font-family:'Outfit',sans-serif;
+  font-weight:700;
+  font-size:0.88rem;
+
+  border:1.5px solid rgba(199,125,255,0.4);
+  background:rgba(255,255,255,0.06);
+  color:#fff;
+
+  transition:0.2s ease;
+}
+
+.cancel-button:hover{
+  background:rgba(255,255,255,0.12);
+  transform:translateY(-1px);
+}
+
+.confirm-button,
+.scan-submit-button{
+  padding:11px 22px;
+  border:none;
+  border-radius:50px;
+  cursor:pointer;
+
+  font-family:'Outfit',sans-serif;
+  font-weight:700;
+  font-size:0.88rem;
+
+  color:#fff;
+  background:linear-gradient(135deg,#6B2FD9,#F72585);
+
+  box-shadow:0 8px 22px rgba(107,47,217,0.35);
+  transition:0.2s ease;
+}
+
+.confirm-button:hover,
+.scan-submit-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(107,47,217,0.45);
+}
+
+/* VIDEO FIX */
+
+#qr-reader video{
+  width:100% !important;
+  height:auto !important;
+  border-radius:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .scan-modal-overlay{
+    padding:0;
+    align-items:flex-end;
+  }
+
+  .scan-modal-content{
+    max-width:100%;
+    max-height:95vh;
+    border-radius:22px 22px 0 0;
+  }
+
+  .scan-modal-header h2{
+    font-size:1.35rem;
+  }
+
+  .scan-modal-body{
+    padding:18px;
+  }
+
+  .scan-modal-footer{
+    flex-direction:column;
+  }
+
+  .cancel-button,
+  .confirm-button,
+  .scan-submit-button{
+    width:100%;
+  }
+}
