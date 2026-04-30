@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 
+//bunch of extra imports for leaflet marker icons and styles. they were broken.
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
@@ -18,6 +19,7 @@ L.Icon.Default.mergeOptions({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
 });
+//end of leaflet marker fixes
 
 const statusLabels = {
   booked: "Order Placed",
@@ -59,10 +61,10 @@ export default function TrackingPage() {
   const cleanTrackingId = trackingId.trim();
   const navigate = useNavigate();
   const isSearchPage = cleanTrackingId === "search" || !cleanTrackingId;
-  const [searchId, setSearchId] = useState(isSearchPage ? "" : cleanTrackingId);
-  const [data, setData] = useState(null);
+  const [searchId, setSearchId] = useState(isSearchPage ? "" : cleanTrackingId); // prefill search input if trackingId is present in URL
+  const [data, setData] = useState(null); 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
     if (isSearchPage) {
@@ -171,6 +173,7 @@ export default function TrackingPage() {
   const scans = data.scans || [];
   const barcodeSrc = data.shipment.barcodeUrl || `/barcodes/${cleanTrackingId}.png`;
 
+  //combines address fields into a single line address.
   const formatAddress = (person) => {
     if (!person) return "Address not available";
 
@@ -192,6 +195,7 @@ export default function TrackingPage() {
       : "Address not available";
   };
 
+  //creates URL with trackingID and reciever details to pass to jsp, which then creates a printable receipt.
   const openReceipt = () => {
   if (!data?.shipment) return;
 
@@ -221,10 +225,7 @@ export default function TrackingPage() {
 
   window.open(url, "_blank");
 };
-console.log("FULL DATA:", data);
-console.log("SHIPMENT:", data?.shipment);
-console.log("SENDER:", data?.shipment?.sender);
-console.log("RECEIVER:", data?.shipment?.receiver);
+
   return (
     <div className="tracking-page mock-track">
       <button onClick={() => navigate("/")} className="back-button floating-back">Back</button>
@@ -310,7 +311,7 @@ console.log("RECEIVER:", data?.shipment?.receiver);
                     </Popup>
                   </Marker>
                 ))}
-
+                
                 <Polyline positions={positions} color="#F72585" weight={4} opacity={0.85} />
               </MapContainer>
             ) : (
