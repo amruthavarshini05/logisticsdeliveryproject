@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
-import "../styles/ScannedShipmentModal.css";
+import axios from "axios"; //axios is a library for making HTTP requests, used here to communicate with the backend API.
+import "../styles/ScannedShipmentModal.css"; 
 
 export default function ScannedShipmentModal({
   isOpen,
@@ -9,9 +9,9 @@ export default function ScannedShipmentModal({
   onClose,
   onStatusUpdate
 }) {
-  const [updating, setUpdating] = useState(false);
+  const [updating, setUpdating] = useState(false); // State to track if a status update is in progress
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [success, setSuccess] = useState(""); // State to hold success messages after status updates
 
   // Valid status transitions
   const validTransitions = {
@@ -28,6 +28,8 @@ export default function ScannedShipmentModal({
     return validTransitions[shipment.status] || [];
   };
 
+  //async as it involves waiting for API response and geolocation retrieval.
+  //asycn functions allow us to write code that looks synchronous but can handle asynchronous operations.
   const handleStatusUpdate = async (newStatus) => {
     setUpdating(true);
     setError("");
